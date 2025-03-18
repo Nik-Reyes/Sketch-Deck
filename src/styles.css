@@ -1,0 +1,25 @@
+*,
+*::after,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: auto;
+}
+
+.sketch-area {
+  background-color: beige;
+  max-width: 1000px;
+  height: auto;
+}
+
+.tile-row {
+  display: flex;
+}
+
+.tile {
+  flex: 1;
+  border: 1px solid grey;
+  aspect-ratio: 1;
+}
