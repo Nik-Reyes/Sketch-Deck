@@ -30,5 +30,13 @@ const paintTile = (e) => {
   }
   tile.style.backgroundColor = `rgba(${0}, ${0}, ${0}, ${alpha})`;
 };
+
 const sketchArea = document.querySelector(".sketch-area");
-sketchArea.addEventListener("click", paintTile);
+sketchArea.addEventListener("mousedown", () => {
+  sketchArea.addEventListener("mouseover", paintTile);
+});
+sketchArea.addEventListener("mousedown", paintTile);
+
+sketchArea.addEventListener("mouseup", () => {
+  sketchArea.removeEventListener("mouseover", paintTile);
+});
