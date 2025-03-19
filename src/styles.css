@@ -12,6 +12,8 @@ body {
   background-color: beige;
   max-width: 500px;
   height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .tile-row {
