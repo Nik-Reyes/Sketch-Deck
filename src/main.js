@@ -6,9 +6,9 @@ const generateTiles = (...numOfTiles) => {
 
   for (let i = 0; i < numOfTiles[0]; i++) {
     const tile = document.createElement("div");
-    tile.classList.add("tile", "border");
+    tile.classList.add("tile");
     const center = document.createElement("div");
-    center.className = "center-tile";
+    center.classList.add("center-tile", "hidden");
     tile.appendChild(center);
     row.appendChild(tile);
   }
@@ -19,22 +19,50 @@ const generateTiles = (...numOfTiles) => {
   sketchArea.appendChild(grid);
 };
 
+function shadeBrush(tile, bgcolor) {
+  const colorValues = bgcolor.match(/[\d.]+/g);
+  let alpha = colorValues.length === 3 ? 1.0 : parseFloat(colorValues[3]);
+
+  if (alpha !== 1.0) {
+    if (!alpha > 0) {
+      alpha = 0.5;
+    } else {
+      alpha += 0.1;
+    }
+    tile.style.backgroundColor = `rgba(${0}, ${0}, ${0}, ${alpha})`;
+  }
+}
+
+function blackBrush(tile) {
+  tile.style.backgroundColor = `rgba(${0}, ${0}, ${0}, ${1})`;
+}
+
+function rainbowBrush(tile, bgcolor) {}
+
+function eraseBrush(tile) {
+  tile.style.backgroundColor = `rgba(${0}, ${0}, ${0}, ${0})`;
+}
+
 const paintTile = (e) => {
   //known bug: right click still allows painting
   if (e.button === 0) {
-    const tile = e.target;
+    const tile = e.target.closest(".tile");
     const computedBgColor =
       getComputedStyle(tile).getPropertyValue("background-color");
-    const colorValues = computedBgColor.match(/[\d.]+/g);
-    let alpha = colorValues.length === 3 ? 1.0 : parseFloat(colorValues[3]);
 
-    if (alpha !== 1.0) {
-      if (!alpha > 0) {
-        alpha = 0.5;
-      } else {
-        alpha += 0.1;
-      }
-      tile.style.backgroundColor = `rgba(${0}, ${0}, ${0}, ${alpha})`;
+    console.log(brushMode);
+    switch (brushMode) {
+      case 1:
+        shadeBrush(tile, computedBgColor);
+        break;
+      case 2:
+        rainbowBrush();
+        break;
+      case 3:
+        eraseBrush(tile);
+        break;
+      default:
+        blackBrush(tile);
     }
   }
 };
@@ -82,12 +110,18 @@ const toggleBorders = () => {
 
 generateTiles((x = 16), (y = 16));
 
+let brushMode = 1;
 const resetButton = document.querySelector("#clear-grid");
 const sketchArea = document.querySelector(".sketch-area");
 const borderButton = document.querySelector("#toggle-borders");
 const centerButton = document.querySelector("#toggle-centers");
 const form = document.querySelector("#grid-size");
 const input = document.querySelector("#grid-dimensions");
+const shadeMode = document.querySelector("#shade");
+const blackMode = document.querySelector("#black");
+const rainbowMode = document.querySelector("#rainbow");
+const eraseMode = document.querySelector("#erase");
+console.log(blackMode);
 
 sketchArea.addEventListener("mousedown", () => {
   sketchArea.addEventListener("mouseover", paintTile);
@@ -107,3 +141,6 @@ form.addEventListener("submit", resizeGrid);
 borderButton.addEventListener("click", toggleBorders);
 resetButton.addEventListener("click", clearGrid);
 centerButton.addEventListener("click", toggleCenterTacks);
+blackMode.addEventListener("click", () => (brushMode = 0));
+shadeMode.addEventListener("click", () => (brushMode = 1));
+eraseMode.addEventListener("click", () => (brushMode = 3));
