@@ -1,4 +1,5 @@
 // rest parameter allows for variable skecth area size (square, portrait, landscape)
+const initialGridSize = 16;
 const generateTiles = (...numOfTiles) => {
   const sketchArea = document.querySelector(".sketch-area");
   const grid = document.createDocumentFragment();
@@ -17,7 +18,7 @@ const generateTiles = (...numOfTiles) => {
 
   sketchArea.appendChild(grid);
 };
-generateTiles((x = 20), (y = 50));
+generateTiles((x = initialGridSize), (y = initialGridSize));
 
 const paintTile = (e) => {
   //known bug: right click still allows painting
@@ -61,4 +62,23 @@ resetButton.addEventListener("click", () => {
     );
   });
   tiles.forEach((tile) => (tile.style.backgroundColor = `rgba(0, 0, 0, 0)`));
+});
+
+const form = document.querySelector("#grid-size");
+const input = document.querySelector("#grid-dimensions");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!input.validity.valid) {
+    if (input.validity.valueMissing) {
+      console.log("Warning!\nMust input a value");
+    } else if (input.validity.patternMismatch) {
+      console.log("Please enter only digits [1-9]");
+    }
+    return;
+  }
+  const tileList = document.querySelectorAll(".tile-row");
+  console.log(tileList);
+  tileList.forEach((row) => row.remove());
+  generateTiles(input.value, input.value);
 });
