@@ -9,11 +9,12 @@ body {
 }
 
 .sketch-area {
-  background-color: beige;
-  max-width: 500px;
+  background-color: rgba(0, 228, 253, 1);
+  max-width: 600px;
   height: auto;
   user-select: none;
   -webkit-user-drag: none;
+  border: 5px solid black;
 }
 
 .tile-row {
@@ -22,7 +23,23 @@ body {
 
 .tile {
   flex: 1;
-  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   aspect-ratio: 1;
   background-color: rgba(0, 0, 0, 0);
+}
+
+.border {
+  border: 1px solid white;
+}
+
+.center-tile {
+  background-color: white;
+  width: 15%;
+  height: 15%;
+}
+
+.hidden {
+  display: none;
 }
