@@ -1,32 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+20&display=swap");
 *,
 *::after,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
-  background-color: #1849a5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background: #d3d3ff url("images/bg01.png");
+  z-index: 1; */
+  image-rendering: pixelated;
+}
+
+.body-gradient {
+  height: 100%;
+  width: 100%;
+
+  background-image: radial-gradient(circle, #3656ab, #2949a0, #1a3a8f);
 }
 
 #header {
-  background-color: #8c9ad7c4;
-  height: vh;
+  background-color: #8c9ad7f2;
   display: flex;
   flex-direction: column;
-  border-bottom: 8px solid #afbaec;
-  box-shadow: 0 0 2px 5px;
+  border-bottom: 8px solid #e6e8f2;
+  box-shadow: 0 0 2px 5px rgb(16, 22, 84);
 }
-
-/* #89b6e5 */
 
 #site-title-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 15px 0px;
+  padding: 25px 0 15px;
   flex: 1;
 }
 
@@ -40,7 +53,6 @@ body {
 
 .title-wrapper {
   border-radius: 15px;
-  background-color: #0c28c1;
   box-shadow: inset 0px 1.5px 5px #01061e;
   background: linear-gradient(
     0.25turn,
@@ -54,17 +66,109 @@ body {
 }
 
 .title {
-  color: #e3edf7;
+  color: white;
   font-size: 4rem;
   text-align: center;
-  text-shadow: 0px 0px 1.6px #e3edf7;
-  padding-top: 10px;
+  text-shadow: 0px 0px 3px #e3edf7, -3px -3px 0 rgba(0, 0, 0, 0.6);
+}
+
+.main {
+  padding: 30px;
+  margin: auto;
+  width: 100%;
+}
+
+.content-wrapper {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+.left,
+.right {
+  flex: 1 1 300px;
+  border-radius: 5px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px -2px 15px #add4f973, 5px 5px 15px #000000;
+}
+
+.right {
+  gap: 15px;
+  padding: 30px;
+  border: 3px solid;
+  background-color: #d4d9f1;
+  border-color: #ffffff #777777 #777777 #ffffff;
+  box-shadow: -2px -2px 10px #add4f973, 5px 5px 15px #000000,
+    inset 2px 2px 2px rgba(255, 255, 255, 0.5),
+    inset -2px -2px 2px rgba(0, 0, 0, 0.7);
+}
+
+.brush-button-row {
+  display: flex;
+}
+
+.brush-button-container {
+  flex: 1;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+}
+
+.brush-title {
+  color: white;
+  text-shadow: 0px 0px 2px #e3edf7, -1px -1px 0px rgba(0, 0, 0, 0.8),
+    0.2px 0.2px 1px black;
+  text-align: center;
+}
+
+.utility-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #96a9e1;
+}
+
+.utility-buttons {
+  margin: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.brush-button-container,
+#toggle-centers,
+#clear-grid,
+#toggle-borders {
+  background-color: #96a9e1;
+  cursor: pointer;
+  border: 3px solid;
+  border-color: #ffffff #777777 #777777 #ffffff;
+  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.5),
+    inset -2px -2px 2px rgba(0, 0, 0, 0.7);
+}
+
+#toggle-centers,
+#clear-grid,
+#toggle-borders {
+  flex: 1;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #b1c5dc;
+  color: white;
+  text-shadow: 0px 0px 2px #e3edf7, -1px -1px 0px black, 0.2px 0.2px 1px black;
+  padding: 8px 15px;
 }
 
 .sketch-area {
-  background-color: rgba(0, 228, 253, 1);
-  max-width: 600px;
-  height: auto;
+  background-color: white;
   user-select: none;
   -webkit-user-drag: none;
   border: 5px solid black;
@@ -83,16 +187,42 @@ body {
   background-color: rgba(0, 0, 0, 0);
 }
 
+#grid-size {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+#grid-dimensions-label {
+  color: white;
+  text-shadow: 0px 0px 2px #e3edf7, -1px -1px 1px black, 0.2px 0.2px 1px black;
+  font-size: 2rem;
+}
+
+#grid-dimensions {
+  width: 2em;
+  height: 1em;
+  font-size: 2rem;
+  text-align: center;
+}
+
 .border {
-  border: 1px solid white;
+  border: 1px solid #cccccc;
 }
 
 .center-tile {
-  background-color: white;
+  background-color: #cccccc;
   width: 15%;
   height: 15%;
 }
 
 .hidden {
   display: none;
+}
+
+footer {
+  justify-content: flex-end;
+  background-color: #d4d9f1;
+  height: 30px;
 }
