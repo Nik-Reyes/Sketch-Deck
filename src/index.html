@@ -7,68 +7,99 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body class="body-gradient">
+  <body>
     <header id="header">
-      <div id="site-title-container">
-        <div class="title-outline">
-          <div class="title-wrapper"><h1 class="title">SKETCH DECK</h1></div>
+      <div class="center-header">
+        <div id="site-title-container">
+          <div class="title-outline">
+            <div class="title-wrapper"><h1 class="title">SKETCH DECK</h1></div>
+          </div>
         </div>
       </div>
+
       <!-- <div id="site-subtitle-container">
       <h3 class="subtitle">Get Sketchin!</h3>
     </div> -->
     </header>
-    <div class="main main-gradient">
-      <div class="content-wrapper">
-        <div class="left">
-          <div class="brush-button-row">
-            <div class="brush-button-container">
-              <h1 class="brush-title">BLACK</h1>
-              <button id="black">black</button>
+    <div class="main-wrapper">
+      <div class="main">
+        <div class="content-wrapper">
+          <div class="right">
+            <div class="sketch-area"></div>
+            <form id="grid-size" novalidate>
+              <label for="text" id="grid-dimensions-label">GRID SIZE:</label>
+              <input
+                type="text"
+                id="grid-dimensions"
+                name="grid-dimensions"
+                placeholder="16"
+                size="2"
+                minlength="1"
+                maxlength="3"
+                autocomplete="off"
+                pattern="[1-9][0-9]*"
+                required
+              />
+            </form>
+          </div>
+          <div class="left">
+            <div class="brush-button-row">
+              <div class="brush-button-container">
+                <h1 class="brush-title">BLACK</h1>
+                <img
+                  src="../images/brush(1).png"
+                  alt="color"
+                  width="72"
+                  height="72"
+                />
+                <!-- <button id="black">black</button> -->
+              </div>
+              <div class="brush-button-container">
+                <h1 class="brush-title">SHADE</h1>
+                <img
+                  src="../images/shading.png"
+                  alt="color"
+                  width="72"
+                  height="72"
+                />
+                <!-- <button id="shade">shade</button> -->
+              </div>
             </div>
-            <div class="brush-button-container">
-              <h1 class="brush-title">SHADE</h1>
-              <button id="shade">shade</button>
+            <div class="brush-button-row">
+              <div class="brush-button-container">
+                <h1 class="brush-title">COLOR</h1>
+                <img
+                  src="../images/color_mixer.png"
+                  alt="color"
+                  width="72"
+                  height="72"
+                />
+                <!-- <button id="rainbow">rainow</button> -->
+              </div>
+              <div class="brush-button-container">
+                <h1 class="brush-title">ERASE</h1>
+                <img
+                  src="../images/eraser.png"
+                  alt="color"
+                  width="72"
+                  height="72"
+                />
+
+                <!-- <button id="erase">erase</button> -->
+              </div>
+            </div>
+            <div class="utility-wrapper">
+              <div class="utility-buttons">
+                <button id="clear-grid">RESET</button>
+                <button id="toggle-centers">TOGGLE GRID</button>
+                <button id="toggle-borders">TOGGLE BORDERS</button>
+              </div>
             </div>
           </div>
-          <div class="brush-button-row">
-            <div class="brush-button-container">
-              <h1 class="brush-title">COLOR</h1>
-              <button id="rainbow">rainow</button>
-            </div>
-            <div class="brush-button-container">
-              <h1 class="brush-title">ERASE</h1>
-              <button id="erase">erase</button>
-            </div>
-          </div>
-          <div class="utility-wrapper">
-            <div class="utility-buttons">
-              <button id="clear-grid">RESET</button>
-              <button id="toggle-centers">TOGGLE GRID</button>
-              <button id="toggle-borders">TOGGLE BORDERS</button>
-            </div>
-          </div>
-        </div>
-        <div class="right">
-          <div class="sketch-area"></div>
-          <form id="grid-size" novalidate>
-            <label for="text" id="grid-dimensions-label">GRID SIZE:</label>
-            <input
-              type="text"
-              id="grid-dimensions"
-              name="grid-dimensions"
-              placeholder="16"
-              size="2"
-              minlength="1"
-              maxlength="3"
-              autocomplete="off"
-              pattern="[1-9][0-9]*"
-              required
-            />
-          </form>
         </div>
       </div>
     </div>
+
     <footer>hi</footer>
     <script src="main.js"></script>
   </body>

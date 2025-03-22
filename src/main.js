@@ -40,6 +40,7 @@ function blackBrush(tile) {
 function rainbowBrush(tile, bgcolor) {}
 
 function eraseBrush(tile) {
+  console.log(tile);
   tile.style.backgroundColor = `rgba(${0}, ${0}, ${0}, ${0})`;
 }
 
@@ -50,7 +51,6 @@ const paintTile = (e) => {
     const computedBgColor =
       getComputedStyle(tile).getPropertyValue("background-color");
 
-    console.log(brushMode);
     switch (brushMode) {
       case 1:
         shadeBrush(tile, computedBgColor);
@@ -59,7 +59,9 @@ const paintTile = (e) => {
         rainbowBrush();
         break;
       case 3:
-        eraseBrush(tile);
+        if (tile.style.backgroundColor !== "") {
+          eraseBrush(tile);
+        }
         break;
       default:
         blackBrush(tile);
@@ -91,20 +93,17 @@ const resizeGrid = (e) => {
     return;
   }
   const tileList = document.querySelectorAll(".tile-row");
-  console.log(tileList);
   tileList.forEach((row) => row.remove());
   generateTiles(input.value, input.value);
 };
 
 function toggleCenterTacks() {
   const centers = document.querySelectorAll(".center-tile");
-  console.log(centers);
   centers.forEach((center) => center.classList.toggle("hidden"));
 }
 
 const toggleBorders = () => {
   const tiles = document.querySelectorAll(".tile");
-  console.log("hi");
   tiles.forEach((tile) => tile.classList.toggle("border"));
 };
 
@@ -121,7 +120,6 @@ const shadeMode = document.querySelector("#shade");
 const blackMode = document.querySelector("#black");
 const rainbowMode = document.querySelector("#rainbow");
 const eraseMode = document.querySelector("#erase");
-console.log(blackMode);
 
 sketchArea.addEventListener("mousedown", () => {
   sketchArea.addEventListener("mouseover", paintTile);
