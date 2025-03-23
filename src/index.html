@@ -52,7 +52,7 @@
                   width="72"
                   height="72"
                 />
-                <!-- <button id="black">black</button> -->
+                <button id="black">black</button>
               </div>
               <div class="brush-button-container">
                 <h1 class="brush-title">SHADE</h1>
@@ -62,7 +62,7 @@
                   width="72"
                   height="72"
                 />
-                <!-- <button id="shade">shade</button> -->
+                <button id="shade">shade</button>
               </div>
             </div>
             <div class="brush-button-row">
@@ -74,7 +74,7 @@
                   width="72"
                   height="72"
                 />
-                <!-- <button id="rainbow">rainow</button> -->
+                <button id="rainbow">rainow</button>
               </div>
               <div class="brush-button-container">
                 <h1 class="brush-title">ERASE</h1>
@@ -85,14 +85,22 @@
                   height="72"
                 />
 
-                <!-- <button id="erase">erase</button> -->
+                <button id="erase">erase</button>
               </div>
             </div>
             <div class="utility-wrapper">
               <div class="utility-buttons">
-                <button id="clear-grid">RESET</button>
-                <button id="toggle-centers">TOGGLE GRID</button>
-                <button id="toggle-borders">TOGGLE BORDERS</button>
+                <div id="toggle-centers" class="toggle">
+                  <div class="toggle-bezel"></div>
+                  TOGGLE POINTS
+                  <div class="toggle-bezel"></div>
+                </div>
+                <div id="toggle-borders" class="toggle">
+                  <div class="toggle-bezel"></div>
+                  TOGGLE GRID
+                  <div class="toggle-bezel"></div>
+                </div>
+                <div id="clear-grid" class="toggle">RESET</div>
               </div>
             </div>
           </div>

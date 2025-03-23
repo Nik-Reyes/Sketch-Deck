@@ -26,22 +26,32 @@ body::after {
   width: 100%;
   height: 100%;
   background: repeating-linear-gradient(
-    0deg,
-    rgba(255, 0, 0, 0.15),
-    rgba(0, 255, 0, 0.15),
-    rgba(0, 0, 255, 0.15) 1px,
-    transparent 1px,
-    transparent 2px
-  );
+      0deg,
+      rgba(255, 0, 0, 0.15),
+      rgba(0, 255, 0, 0.15) 1px,
+      rgba(0, 0, 255, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.15),
+      rgba(0, 255, 0, 0.15) 1px,
+      rgba(0, 0, 255, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
   pointer-events: none;
-  z-index: 999999999999;
-  mix-blend-mode: screen;
+  z-index: 2;
+  mix-blend-mode: color-burn;
+
+  /* screen, overlay, color-burn, soft-light, difference, exclusion, luminosity*/
 }
 
 #header {
   background-color: #8c9ad7f2;
-  border-bottom: 8px solid #e6e8f2;
-  box-shadow: 0 0 2px 5px rgb(16, 22, 84);
+  border-bottom: 8px solid #fefeff;
+  box-shadow: 0 0 2px 10px rgb(0, 0, 0);
 }
 
 .center-header {
@@ -139,16 +149,22 @@ body::after {
 
 .brush-title,
 #grid-dimensions-label,
-#toggle-centers,
-#clear-grid,
+.toggle,
 #toggle-borders {
   color: white;
   text-shadow: 0px 0px 4px #e3edf7, -1px -1px 2px rgba(0, 0, 0, 1),
     0.2px 0.2px 1px black;
 }
 
+#clear-grid {
+  color: rgb(172, 16, 16);
+  text-shadow: 0px 0px 4px #ff3535, -1px -1px 2px rgb(255, 255, 255),
+    0.2px 0.2px 1px rgb(255, 255, 255);
+}
+
 .brush-title {
   text-align: center;
+  padding: 0 10px;
 }
 
 img {
@@ -171,10 +187,8 @@ img {
 }
 
 .brush-button-container,
-#toggle-centers,
-#clear-grid,
-#toggle-borders {
-  background-color: #96a9e1;
+.toggle {
+  background-color: #adbeef;
   cursor: pointer;
   border: 3px solid;
   border-color: #ffffff #777777 #777777 #ffffff;
@@ -182,18 +196,116 @@ img {
     inset -2px -2px 2px rgba(0, 0, 0, 0.7);
 }
 
-#toggle-centers,
-#clear-grid,
-#toggle-borders {
-  flex: 1;
-  font-size: 1.2rem;
+#clear-grid {
+  justify-content: center;
+}
+
+.toggle {
   text-align: center;
-  background-color: #b1c5dc;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  background-color: #d4d9f1;
   padding: 8px 15px;
+  gap: 10px;
+}
+
+.toggle-bezel {
+  box-sizing: content-box;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 3px;
+  /* box-shadow: inset 0 0 2.5px #b1c5dc; */
+  background: radial-gradient(
+        #777,
+        #171717 7.5px,
+        #000 7.5px,
+        #707070 calc(7.5px - 1px),
+        transparent 7.5px
+      )
+      content-box,
+    repeating-radial-gradient(
+      rgba(119, 119, 119, 0.15),
+      rgba(187, 187, 187, 0.15),
+      rgba(119, 119, 119, 0.15) 2px
+    ),
+    conic-gradient(
+      #f4f4f4,
+      #fafafa,
+      #bab9b9,
+      #e6e6e6,
+      #a2a2a2,
+      #a2a2a2,
+      #e6e6e6,
+      #bab9b9,
+      #fafafa,
+      #f4f4f4
+    );
+}
+
+.toggle-bezel:before,
+.toggle-bezel:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6.5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  content: "";
+}
+
+.toggle-bezel:before {
+  height: 8px;
+  border-radius: 50%/ 59% 59% 41% 41%;
+  transform: scalex(0.83);
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+.toggle-bezel:after {
+  box-shadow: inset 0 -10px 1px -9px rgba(255, 255, 255, 0.25);
+}
+
+.active {
+  background: radial-gradient(
+        #20f304 3px,
+        #20f304cf 4px,
+        #20f304b7 5px,
+        #0b5d00a3 8px,
+        transparent
+      )
+      content-box,
+    repeating-radial-gradient(
+      rgba(119, 119, 119, 0.15),
+      rgba(187, 187, 187, 0.15),
+      rgba(119, 119, 119, 0.15) 2px
+    ),
+    conic-gradient(
+      #f4f4f4,
+      #fafafa,
+      #bab9b9,
+      #e6e6e6,
+      #a2a2a2,
+      #a2a2a2,
+      #e6e6e6,
+      #bab9b9,
+      #fafafa,
+      #f4f4f4
+    );
 }
 
 .sketch-area {
+  position: relative;
   background-color: white;
+  z-index: 10000000000;
   user-select: none;
   -webkit-user-drag: none;
   border: 5px solid black;

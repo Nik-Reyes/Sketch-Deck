@@ -59,9 +59,8 @@ const paintTile = (e) => {
         rainbowBrush();
         break;
       case 3:
-        if (tile.style.backgroundColor !== "") {
-          eraseBrush(tile);
-        }
+        eraseBrush(tile);
+
         break;
       default:
         blackBrush(tile);
@@ -98,11 +97,15 @@ const resizeGrid = (e) => {
 };
 
 function toggleCenterTacks() {
+  const lights = document.querySelectorAll("#toggle-centers .toggle-bezel");
+  lights.forEach((light) => light.classList.toggle("active"));
   const centers = document.querySelectorAll(".center-tile");
   centers.forEach((center) => center.classList.toggle("hidden"));
 }
 
 const toggleBorders = () => {
+  const lights = document.querySelectorAll("#toggle-borders .toggle-bezel");
+  lights.forEach((light) => light.classList.toggle("active"));
   const tiles = document.querySelectorAll(".tile");
   tiles.forEach((tile) => tile.classList.toggle("border"));
 };
@@ -142,3 +145,8 @@ centerButton.addEventListener("click", toggleCenterTacks);
 blackMode.addEventListener("click", () => (brushMode = 0));
 shadeMode.addEventListener("click", () => (brushMode = 1));
 eraseMode.addEventListener("click", () => (brushMode = 3));
+
+// toggle borders WScript
+// const children = Array.from(e.target.closest("#toggle-borders").childNodes);
+//   // const bezels = children.filter((child) => child.className !== "");
+//   // console.log(bezels);
