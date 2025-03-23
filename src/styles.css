@@ -361,3 +361,49 @@ footer {
   background-color: #d4d9f1;
   height: 30px;
 }
+
+.warning {
+  display: flex;
+  justify-content: center;
+  max-width: 300px;
+  text-align: left;
+  background-color: white;
+  padding: 2px;
+  outline: 1px solid black;
+  margin: 5px;
+}
+
+.middle-warning {
+  background-color: black;
+  padding: 1.5px;
+}
+
+.inner-warning {
+  background-color: white;
+  padding: 20px;
+  box-shadow: inset;
+}
+
+.warning-button-wrapper {
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.warning-buttons {
+  flex: 1;
+  display: flex;
+  max-width: 50px;
+  border-radius: 5px;
+  padding: 1px;
+  border: 1px solid black;
+}
+
+.choice-button {
+  all: unset;
+  flex: 1;
+  border: 1px solid black;
+  border-radius: 4px;
+  text-align: center;
+}
