@@ -44,7 +44,7 @@
           </div>
           <div class="left">
             <div class="brush-button-row">
-              <div class="brush-button-container">
+              <div id="black" class="brush-button-container">
                 <h1 class="brush-title">BLACK</h1>
                 <img
                   src="../images/brush(1).png"
@@ -52,9 +52,8 @@
                   width="72"
                   height="72"
                 />
-                <button id="black">black</button>
               </div>
-              <div class="brush-button-container">
+              <div id="shade" class="brush-button-container">
                 <h1 class="brush-title">SHADE</h1>
                 <img
                   src="../images/shading.png"
@@ -62,11 +61,10 @@
                   width="72"
                   height="72"
                 />
-                <button id="shade">shade</button>
               </div>
             </div>
             <div class="brush-button-row">
-              <div class="brush-button-container">
+              <div id="rainbow" class="brush-button-container">
                 <h1 class="brush-title">COLOR</h1>
                 <img
                   src="../images/color_mixer.png"
@@ -74,9 +72,8 @@
                   width="72"
                   height="72"
                 />
-                <button id="rainbow">rainow</button>
               </div>
-              <div class="brush-button-container">
+              <div id="erase" class="brush-button-container">
                 <h1 class="brush-title">ERASE</h1>
                 <img
                   src="../images/eraser.png"
@@ -84,8 +81,6 @@
                   width="72"
                   height="72"
                 />
-
-                <button id="erase">erase</button>
               </div>
             </div>
             <div class="utility-wrapper">
@@ -107,27 +102,25 @@
         </div>
       </div>
     </div>
-
-    <div class="warning">
-      <div class="middle-warning">
-        <div class="inner-warning">
-          <p>
-            Warning! Resizing the grid will ERASE your drawing! Would you like
-            to proceed?
-          </p>
-          <div class="warning-button-wrapper">
-            <div class="warning-buttons">
-              <button class="choice-button">NO</button>
-            </div>
-            <div class="warning-buttons">
-              <button class="choice-button">YES</button>
-            </div>
+    <div class="warning-modal hidden">
+      <div class="warning">
+        <div class="middle-warning">
+          <div class="inner-warning">
+            <p></p>
+            <div class="warning-button-wrapper"></div>
           </div>
         </div>
       </div>
     </div>
-
     <footer>hi</footer>
     <script src="main.js"></script>
   </body>
 </html>
+
+<!-- Warning! Resizing the grid will ERASE your drawing! Would you like to proceed? -->
+<!-- <div class="warning-buttons">
+  <button id="cancel" class="choice-button">NO</button>
+</div>
+<div class="warning-buttons">
+  <button id="confirm" class="choice-button">YES</button>
+</div> -->
