@@ -145,25 +145,43 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #adbeef;
 }
 
-.brush-title,
+.brush-button-container:active,
+.toggle:active {
+  border-color: #4b4b4b #bfbfbf #bfbfbf #4b4b4b;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.7);
+  img {
+    transform: scale(0.9);
+  }
+  .brush-title {
+    transform: scale(0.9);
+  }
+  .toggle-bezel {
+    transform: scale(0.9);
+  }
+  .toggle-title {
+    transform: scale(0.9);
+  }
+}
+
 #grid-dimensions-label,
-.toggle,
-#toggle-borders {
+.brush-title,
+.toggle-title {
+  text-align: center;
   color: white;
   text-shadow: 0px 0px 4px #e3edf7, -1px -1px 2px rgba(0, 0, 0, 1),
     0.2px 0.2px 1px black;
 }
 
-#clear-grid {
+#clear-grid p {
   color: rgb(172, 16, 16);
   text-shadow: 0px 0px 4px #ff3535, -1px -1px 2px rgb(255, 255, 255),
     0.2px 0.2px 1px rgb(255, 255, 255);
 }
 
 .brush-title {
-  text-align: center;
   padding: 0 10px;
 }
 
@@ -188,7 +206,6 @@ img {
 
 .brush-button-container,
 .toggle {
-  background-color: #adbeef;
   cursor: pointer;
   border: 3px solid;
   border-color: #ffffff #777777 #777777 #ffffff;

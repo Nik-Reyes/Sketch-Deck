@@ -37,7 +37,13 @@ function blackBrush(tile) {
   tile.style.backgroundColor = `rgba(${0}, ${0}, ${0}, ${1})`;
 }
 
-function rainbowBrush(tile, bgcolor) {}
+function rainbowBrush(tile) {
+  tile.style.backgroundColor = `rgba(${Math.floor(
+    Math.random() * 256
+  )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+    Math.random() * 256
+  )}, ${1})`;
+}
 
 function eraseBrush(tile) {
   console.log(tile);
@@ -56,7 +62,7 @@ const paintTile = (e) => {
         shadeBrush(tile, computedBgColor);
         break;
       case 2:
-        rainbowBrush();
+        rainbowBrush(tile);
         break;
       case 3:
         eraseBrush(tile);
@@ -240,6 +246,7 @@ resetButton.addEventListener("click", clearGrid);
 centerButton.addEventListener("click", toggleCenterTacks);
 blackMode.addEventListener("click", (e) => (brushMode = 0));
 shadeMode.addEventListener("click", (e) => (brushMode = 1));
+rainbowMode.addEventListener("click", () => (brushMode = 2));
 eraseMode.addEventListener("click", (e) => (brushMode = 3));
 warningModal.addEventListener("click", (e) => {
   const modalButton = e.target.closest("button");
