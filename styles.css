@@ -44,14 +44,13 @@ body::after {
   pointer-events: none;
   z-index: 2;
   mix-blend-mode: color-burn;
-
-  /* screen, overlay, color-burn, soft-light, difference, exclusion, luminosity*/
 }
 
 #header {
+  position: relative;
   background-color: #8c9ad7f2;
   border-bottom: 8px solid #fefeff;
-  box-shadow: 0 0 2px 10px rgb(0, 0, 0);
+  box-shadow: 0 0 20px 3px rgb(0, 0, 0);
 }
 
 .center-header {
@@ -320,6 +319,7 @@ img {
 }
 
 .sketch-area {
+  height: auto;
   position: relative;
   background-color: white;
   z-index: 3;
